@@ -1,5 +1,6 @@
 package stepsNG;
 
+import org.testng.annotations.*;
 import pages.BasePage;
 
 public class automatePeYA extends BasePage {
@@ -51,6 +52,25 @@ public class automatePeYA extends BasePage {
 
     * */
 
+
+
+    @Parameters({ "broswer-name" })
+    @BeforeMethod
+    public void openBrowserAndGoToPeya (String browserName){
+        //Check parameters within testng.xml
+        initializeDriver(browserName);
+        driver.get("https://www.pedidosya.com.uy/");
+    }
+
+    @AfterMethod
+    public void tearDown (){
+        driver.quit();
+    }
+
+    @Test
+    public void storyReq (){
+
+    }
 
 
 }
