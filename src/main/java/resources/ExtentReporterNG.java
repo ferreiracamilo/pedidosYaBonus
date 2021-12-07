@@ -3,7 +3,13 @@ package resources;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.*;
+
+import org.testng.IReporter;
+import org.testng.IResultMap;
+import org.testng.ISuite;
+import org.testng.ISuiteResult;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.xml.XmlSuite;
 
 import java.io.File;
@@ -40,9 +46,6 @@ public class ExtentReporterNG implements IReporter {
         if (tests.size() > 0) {
             for (ITestResult result : tests.getAllResults()) {
                 test = extent.startTest(result.getMethod().getMethodName());
-
-                /*test.getTest(). = getTime(result.getStartMillis());
-                test.getTest().endedTime = getTime(result.getEndMillis());*/
 
                 for (String group : result.getMethod().getGroups())
                     test.assignCategory(group);

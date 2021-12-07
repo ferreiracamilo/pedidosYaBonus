@@ -4,6 +4,7 @@ import java.io.File;
 import org.apache.commons.io.FileUtils;
 import java.io.IOException;
 
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -33,7 +34,7 @@ public class BasePage {
     }
 
     private void initializeChrome (){
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\resources\\chromedriver_win.exe");
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\resources\\selenium_drivers\\chromedriver_win.exe");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
@@ -42,7 +43,7 @@ public class BasePage {
     }
 
     private void initializeMozilla (){
-        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\resources\\geckodriver_win.exe");
+        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\resources\\selenium_drivers\\geckodriver_win.exe");
 
         FirefoxOptions options = new FirefoxOptions();
         options.setProfile(new FirefoxProfile());
@@ -55,7 +56,8 @@ public class BasePage {
     {
         //In future occasions may be use
         File src=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(src, new File("C://test//"+result+"screenshot.png")); //to be decided location to save screenshots in case is done
+        FileUtils.copyFile(src, new File(System.getProperty("user.dir")+"\\resources\\test_screenshot\\"+result+"screenshot.png")); //to be decided location to save screenshots in case is done
+        // FileUtils.copyFile(src, new File("C://test//"+result+"screenshot.png")); //to be decided location to save screenshots in case is done
     }
 
 }

@@ -69,7 +69,7 @@ public class SearchPage {
     }
 
     /**
-     * Write the searchbox to loof for specific food and submit the search
+     * Write the searchbox to look for specific food and submit the search
      * @param food Specify food to search for
      */
     public void writeFoodBoxAndSubmit (String food){
@@ -133,7 +133,7 @@ public class SearchPage {
     }
 
     /**
-     * Clic on specific restaurant to retrieve more detailed information
+     * Click on specific restaurant to retrieve more detailed information
      * <mark>Before you must check how many elements are in view scope</mark>
      * @param index
      */

@@ -4,6 +4,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Random;
+
 public class MyUtilities {
 
     /**
@@ -15,6 +17,12 @@ public class MyUtilities {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
         element.click();
+    }
+
+    public static int randomNumber (int minArg, int maxArg){
+        int min = minArg;
+        int max = maxArg;
+        return new Random().nextInt(max - min + 1) + min;
     }
 
 }
