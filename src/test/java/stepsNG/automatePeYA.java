@@ -15,6 +15,8 @@ import java.util.List;
 
 public class automatePeYA extends BasePage {
 
+    //Cannot check whole solution due to being identified as a robot within chrome and mozilla map won't load to confirm location
+
     /*
     ACTIONS TO BE DONE AFTER SOME MODIFICATION DUE TO SAVE EFFORT OR NOT BEING APPLICABLE ANYMORE, ALONG APPLYING TESTNG INSTEAD OF CUCUMBER
     Go to https://www.pedidosya.com.uy/
@@ -37,27 +39,27 @@ public class automatePeYA extends BasePage {
 
     final static Logger logger = Logger.getLogger(automatePeYA.class);
 
-    @BeforeMethod(groups = { "peya bonus"})
+    @BeforeMethod
     @Parameters({ "browser-name" })
     public void openBrowserAndGoToPeya (String browserName){
-        //Check parameters within testng.xml
+        //Change parameter within testng.xml for initilizing other browser
         initializeDriver(browserName);
         driver.get("https://www.pedidosya.com.uy/");
     }
 
-    @AfterMethod(groups = { "peya bonus"})
+    @AfterMethod
     public void tearDown (){
         driver.quit();
     }
 
     @DataProvider(name = "test-data-addresses")
-    public Object[][] dataProvFunc(){
+    public Object[][] dataProvAddress(){
         return new Object[][]{
                 {"Florida 1276"},{"Comandante Braga 2582"}
         };
     }
 
-    @Test(dataProvider ="test-data-addresses",priority = 1,groups = { "peya bonus"})
+    @Test(dataProvider ="test-data-addresses",priority = 1)
     public void mainPageExecution (String address){
         MainPage mainP = new MainPage(driver);
         mainP.writeLocation(address);
@@ -65,7 +67,7 @@ public class automatePeYA extends BasePage {
         mainP.confirmLocation();
     }
 
-    @Test(priority = 2, enabled = false,groups = { "peya bonus"})
+    @Test(priority = 2, enabled = false)
     public void searchPageExecution (){
         SearchPage searchP = new SearchPage(driver);
         searchP.writeFoodBoxAndSubmit("Pizza");
@@ -85,7 +87,7 @@ public class automatePeYA extends BasePage {
         searchP.clickRestaurantByIndex(1);
     }
 
-    @Test(priority = 3, enabled = false,groups = { "peya bonus"})
+    @Test(priority = 3, enabled = false)
     public void restaurantPageExecution (){
         RestaurantPage restaurantP = new RestaurantPage(driver);
 

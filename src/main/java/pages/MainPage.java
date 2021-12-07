@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage {
@@ -18,6 +19,7 @@ public class MainPage {
     private static final String xpInputSearchbox = "//input[@id='search_address_input']";
     private static final String xpButtonSearchbox = "//button[@type='submit']";
     private static final String xpButtonConfirmLocation = "//button[@id='confirm_location_btn']";
+    private static final String xpTagMapLocation = "//img[@src='https://maps.gstatic.com/mapfiles/transparent.png'] //parent::div";
 
     @FindBy(xpath = xpInputSearchbox)
     private WebElement inputSearchbox;
@@ -27,6 +29,9 @@ public class MainPage {
 
     @FindBy(xpath = xpButtonConfirmLocation)
     private WebElement buttonConfirmLocation;
+
+    @FindBy(xpath = xpTagMapLocation)
+    private WebElement buttonMapLocation;
 
     /**
      * Region Constructor
@@ -60,8 +65,13 @@ public class MainPage {
      * Confirm location by cliking on button
      */
     public void confirmLocation (){
+        waitElement(buttonMapLocation);
+        buttonMapLocation.click();
         buttonConfirmLocation.click();
     }
 
+    private void waitElement (WebElement ele) {
+        this.wait.until(ExpectedConditions.visibilityOf(ele));
+    }
 
 }
